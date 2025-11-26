@@ -47,7 +47,13 @@ private final CategoryService categoryService;
     }
 
 
+//(7)
+@GetMapping("/get most")
+public ResponseEntity<?> getMostUsedCate(){
+        if(categoryService.getMostUsedCategory().equals("-1")) return ResponseEntity.status(400).body(new ApiResponse("there is no most used category yet"));
+     return ResponseEntity.status(200).body(new ApiResponse("most category used is "+categoryService.getMostUsedCategory()));
 
+}
 
 
 }

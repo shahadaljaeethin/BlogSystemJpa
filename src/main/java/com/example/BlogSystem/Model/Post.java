@@ -2,6 +2,7 @@ package com.example.BlogSystem.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -33,9 +34,9 @@ public class Post {
     @PastOrPresent(message = "invalid date")
     private LocalDate publishDate;
 
-    @NotEmpty(message = "please log in to comment")
+    @NotNull(message = "please log in to comment")
     private Integer userID;
-    @NotEmpty(message = "choose category for this blog")
+    @NotNull(message = "choose category for this blog")
     private Integer categoryID;
 
 }

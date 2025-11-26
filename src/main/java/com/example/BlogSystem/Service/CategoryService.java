@@ -1,8 +1,10 @@
 package com.example.BlogSystem.Service;
 
 import com.example.BlogSystem.Model.Category;
+import com.example.BlogSystem.Model.Post;
 import com.example.BlogSystem.Model.User;
 import com.example.BlogSystem.Repository.CategoryRepository;
+import com.example.BlogSystem.Repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryService {
 private final CategoryRepository categoryRepository;
+    private final PostRepository postRepository;
+
 //-
 
     public void addCategory(Category cate){
@@ -43,6 +47,13 @@ private final CategoryRepository categoryRepository;
         categoryRepository.delete(cate);
         return true;
 
+    }
+
+    public String getMostUsedCategory(){
+    Post p = postRepository.getMostUsedCategory();
+    Category c = categoryRepository.findCategoryById(p.getCategoryID());
+    if(c==null) return  "-1";
+    return  c.getName();
     }
 
 
