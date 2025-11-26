@@ -31,6 +31,7 @@ public class User {
 
     @NotEmpty(message = "write email")
     @Email(message = "invalid email")
+    @Column(columnDefinition = "varchar(50) unique not null")
     private String email;
 
     @PastOrPresent(message = "invalid date")
